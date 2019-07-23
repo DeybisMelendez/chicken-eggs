@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game.gd" type="Script" id=1]
+[ext_resource path="res://egg.tscn" type="PackedScene" id=2]
+[ext_resource path="res://New Piskel.png" type="Texture" id=3]
+[ext_resource path="res://chicken.wav" type="AudioStream" id=4]
+[ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=5]
+
+[node name="game" type="Node2D"]
+script = ExtResource( 1 )
+egg = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 288, 512 )
+color = Color( 0.160784, 0.678431, 1, 1 )
+
+[node name="eggs" type="Node2D" parent="."]
+
+[node name="Chicken" type="Sprite" parent="."]
+position = Vector2( 135.375, 248.188 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 3
+
+[node name="sound" type="AudioStreamPlayer" parent="Chicken"]
+stream = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="score" type="Label" parent="."]
+margin_left = 13.0
+margin_top = 13.0
+margin_right = 93.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 5 )
+text = "Score: 0"
+
+[node name="record" type="Label" parent="."]
+margin_left = 13.0
+margin_top = 31.0
+margin_right = 105.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 5 )
+text = "Record: 0"

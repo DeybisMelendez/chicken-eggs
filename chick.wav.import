@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chick.wav-365e9bdd46b81ac472fa3c7e7a8d9488.sample"
+
+[deps]
+
+source_file="res://chick.wav"
+dest_files=[ "res://.import/chick.wav-365e9bdd46b81ac472fa3c7e7a8d9488.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
