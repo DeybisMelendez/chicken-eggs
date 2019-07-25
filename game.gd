@@ -4,6 +4,20 @@ export (PackedScene) var egg
 var score = 0
 var record = 0
 
+func _ready():
+	$Credits.connect("button_up", self, "show_credits")
+	$CanvasLayer/Popup/VBoxContainer/deybis.connect("button_up", self, "deybis")
+	$CanvasLayer/Popup/VBoxContainer/kalpar.connect("button_up", self, "kalpar")
+
+func deybis():
+	OS.shell_open("https://www.youtube.com/c/deybismelendez")
+
+func kalpar():
+	OS.shell_open("https://twitter.com/Kalpar_ODSJ")
+
+func show_credits():
+	$CanvasLayer/Popup.popup()
+
 func _physics_process(delta):
 	if Input.is_action_just_pressed("clic"):
 		var new_egg = egg.instance()
@@ -19,7 +33,7 @@ func _physics_process(delta):
 
 func set_score(point):
 	score += point
-	$score.set_text("Score: " + str(score))
+	$score.set_text("Eggs: " + str(score))
 	if score > record:
 		record = score
-		$record.set_text("Record: " + str(record))
+		$record.set_text("Max eggs: " + str(record))

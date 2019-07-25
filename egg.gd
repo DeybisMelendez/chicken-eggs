@@ -9,7 +9,7 @@ func _ready():
 
 func _physics_process(delta):
 	if can_walk:
-		position.x -= SPEED * delta
+		global_position.x -= SPEED * delta
 
 func exit():
 	queue_free()
@@ -18,3 +18,4 @@ func walk(anim):
 	can_walk = true
 	get_tree().current_scene.set_score(-1)
 	$sound.play()
+	$AnimationPlayer.play("walk")

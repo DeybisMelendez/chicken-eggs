@@ -1,10 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game.gd" type="Script" id=1]
 [ext_resource path="res://egg.tscn" type="PackedScene" id=2]
 [ext_resource path="res://New Piskel.png" type="Texture" id=3]
 [ext_resource path="res://chicken.wav" type="AudioStream" id=4]
 [ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+length = 16.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3, 5, 7, 9, 11, 13, 15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.160784, 0.678431, 1, 1 ), Color( 0.160784, 0.678431, 1, 1 ), Color( 1, 0, 0.301961, 1 ), Color( 1, 0, 0.301961, 1 ), Color( 1, 0.639216, 0, 1 ), Color( 1, 0.639216, 0, 1 ), Color( 0, 0.894118, 0.211765, 1 ), Color( 0, 0.894118, 0.211765, 1 ), Color( 0.160784, 0.678431, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 144, 256 )
 
 [node name="game" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,15 +34,21 @@ egg = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 288, 512 )
-color = Color( 0.160784, 0.678431, 1, 1 )
+mouse_filter = 2
+color = Color( 0.0763154, 0.874665, 0.195604, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 1 )
 
 [node name="eggs" type="Node2D" parent="."]
 
 [node name="Chicken" type="Sprite" parent="."]
 position = Vector2( 135.375, 248.188 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 3 )
-hframes = 3
+hframes = 4
+frame = 3
 
 [node name="sound" type="AudioStreamPlayer" parent="Chicken"]
 stream = ExtResource( 4 )
@@ -30,17 +56,92 @@ stream = ExtResource( 4 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="score" type="Label" parent="."]
-margin_left = 13.0
-margin_top = 13.0
-margin_right = 93.0
-margin_bottom = 35.0
+margin_left = 8.0
+margin_top = 5.0
+margin_right = 88.0
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 5 )
-text = "Score: 0"
+text = "Eggs: 0"
 
 [node name="record" type="Label" parent="."]
-margin_left = 13.0
-margin_top = 31.0
-margin_right = 105.0
-margin_bottom = 53.0
+margin_left = 8.0
+margin_top = 23.0
+margin_right = 125.0
+margin_bottom = 45.0
 custom_fonts/font = ExtResource( 5 )
-text = "Record: 0"
+text = "Max eggs: 0"
+
+[node name="Credits" type="Button" parent="."]
+margin_left = 191.823
+margin_top = 9.29414
+margin_right = 276.823
+margin_bottom = 34.2941
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Credits"
+
+[node name="CanvasLayer" type="CenterContainer" parent="."]
+margin_right = 288.0
+margin_bottom = 512.0
+mouse_filter = 2
+
+[node name="Popup" type="Popup" parent="CanvasLayer"]
+visible = true
+margin_left = 44.0
+margin_top = 156.0
+margin_right = 244.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 200, 200 )
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Popup"]
+margin_left = 7.0
+margin_top = 6.0
+margin_right = 192.0
+margin_bottom = 194.0
+mouse_filter = 2
+alignment = 1
+
+[node name="made" type="Label" parent="CanvasLayer/Popup/VBoxContainer"]
+margin_right = 185.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 5 )
+text = "Made with 
+Godot Engine 3.1.1
+"
+align = 1
+
+[node name="developer" type="Label" parent="CanvasLayer/Popup/VBoxContainer"]
+margin_top = 76.0
+margin_right = 185.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 5 )
+text = "Developer:"
+align = 1
+
+[node name="deybis" type="Button" parent="CanvasLayer/Popup/VBoxContainer"]
+margin_top = 102.0
+margin_right = 185.0
+margin_bottom = 130.0
+custom_fonts/font = ExtResource( 5 )
+text = "Deybis Melendez"
+
+[node name="asset" type="Label" parent="CanvasLayer/Popup/VBoxContainer"]
+margin_top = 134.0
+margin_right = 185.0
+margin_bottom = 156.0
+custom_fonts/font = ExtResource( 5 )
+text = "Asset:"
+align = 1
+
+[node name="kalpar" type="Button" parent="CanvasLayer/Popup/VBoxContainer"]
+margin_top = 160.0
+margin_right = 185.0
+margin_bottom = 188.0
+custom_fonts/font = ExtResource( 5 )
+text = "Kalpar"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 144, 256 )
+shape = SubResource( 2 )
+action = "clic"
