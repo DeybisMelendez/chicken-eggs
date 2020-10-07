@@ -14,7 +14,7 @@ func _physics_process(delta):
 func exit():
 	queue_free()
 
-func walk(anim):
+func walk(_anim):
 	can_walk = true
 	get_tree().current_scene.set_score(-1)
 	$sound.play()

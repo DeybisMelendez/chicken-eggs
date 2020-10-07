@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/banner.jpg-692e523388eda68bd34994979ccab0d9.stex"
+path="res://.import/banner.jpg-5159a8ff6e2f9d94549575edf02f384e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://banner.jpg"
-dest_files=[ "res://.import/banner.jpg-692e523388eda68bd34994979ccab0d9.stex" ]
+source_file="res://android/banner.jpg"
+dest_files=[ "res://.import/banner.jpg-5159a8ff6e2f9d94549575edf02f384e.stex" ]
 
 [params]
 
